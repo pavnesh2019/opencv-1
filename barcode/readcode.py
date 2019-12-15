@@ -13,7 +13,7 @@ ap.add_argument("-o","--output",type=str,default="result.csv",help="path to csv 
 args=vars(ap.parse_args())
 
 print('[INFO]starting video streaming')
-vs=VideoStream(src=0).start()
+vs=VideoStream(src=1).start()
 time.sleep(2.0)
 
 csv=open(args["output"],"w")
