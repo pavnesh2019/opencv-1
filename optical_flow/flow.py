@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture('opencv/optical_flow/pcoins.mp4')
+cap = cv2.VideoCapture('opencv/optical_flow/slow_circles.mp4')
 
 # params for ShiTomasi corner detection
 feature_params = dict( maxCorners = 100,
