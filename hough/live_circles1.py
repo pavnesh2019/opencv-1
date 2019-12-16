@@ -1,21 +1,24 @@
 import numpy as np 
 import cv2
 
-cap=cv2.VideoCapture("opencv/hough/slow_coins.mp4")
+#cap=cv2.VideoCapture("opencv/hough/slow_coins.mp4")
 
-#cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while(True):
     ret, frame = cap.read()
     frame = cv2.medianBlur(frame,5)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    #cv2.imshow("check",frame)
+    #cv2.waitKey(0)
 
 ###
 #HughCircles Detection TEST  
     circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT,1,50,
-                          param1=50,param2=30,minRadius=95,maxRadius=110) 
+                          param1=50,param2=30,minRadius=95,maxRadius=150) 
     circles = np.uint16(np.around(circles))
     ret,thresh = cv2.threshold(gray,127,255,0)
+
  
 # calculate moments of binary image
     M = cv2.moments(thresh)
@@ -32,8 +35,9 @@ while(True):
             cv2.line(frame,(i[0],i[1]),(cX,cY),(0,0,0),2)
 #    
 ###
-
+ 
 # Display the resulting frame
+    cv2.waitKey(1500)
     cv2.imshow('live_hough_circlesq',frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
